@@ -15,7 +15,8 @@ RUN apt-get update
 RUN apt-get install software-properties-common -y
 RUN add-apt-repository universe -y
 RUN apt-get install -y python2
-ADD https://bootstrap.pypa.io/get-pip.py /home/
+#ADD https://bootstrap.pypa.io/get-pip.py /home/
+ADD https://bootstrap.pypa.io/pip/2.7/get-pip.py /home/
 RUN python2 get-pip.py
 RUN apt-get update && apt-get install -y
 RUN apt-get install libbz2-dev liblzma-dev gfortran zlib1g-dev samtools wget unzip curl make git -y
