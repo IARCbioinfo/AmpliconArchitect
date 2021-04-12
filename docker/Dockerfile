@@ -18,11 +18,11 @@ RUN apt-get install -y python2
 ADD https://bootstrap.pypa.io/get-pip.py /home/
 RUN python2 get-pip.py
 RUN apt-get update && apt-get install -y
-RUN apt-get install libbz2-dev liblzma-dev gfortran zlib1g-dev samtools wget unzip curl -y
+RUN apt-get install libbz2-dev liblzma-dev gfortran zlib1g-dev samtools wget unzip curl make git -y
 #RUN update-alternatives --install /usr/bin/python python /usr/bin/python2 10
 #RUN update-alternatives --config python
 RUN pip2 install Cython
-RUN pip2 install numpy scipy matplotlib pysam Flask
+RUN pip2 install numpy scipy matplotlib pysam Flask intervaltree
 
 RUN cd /home/programs && wget http://download.mosek.com/stable/8.0.0.60/mosektoolslinux64x86.tar.bz2
 RUN cd /home/programs && tar xf mosektoolslinux64x86.tar.bz2
@@ -44,3 +44,4 @@ RUN cd /home/programs/mosek/8/tools/platform/linux64x86/python/2/ && python2 set
 RUN echo export AA_DATA_REPO=/home/data_repo >> ~/.bashrc
 ADD https://github.com/jluebeck/AmpliconArchitect/archive/master.zip /home/programs
 RUN cd /home/programs && unzip master.zip
+RUN cd /home/programs && git clone https://github.com/jluebeck/AmpliconClassifier.git
