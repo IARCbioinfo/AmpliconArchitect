@@ -24,6 +24,9 @@ RUN apt-get install libbz2-dev liblzma-dev gfortran zlib1g-dev samtools wget unz
 #RUN update-alternatives --config python
 RUN pip2 install Cython
 RUN pip2 install numpy scipy matplotlib pysam Flask intervaltree
+RUN apt-get install -y python3-matplotlib python3-numpy python3-scipy
+RUN pip2 install numpy scipy
+RUN pip2 install --upgrade matplotlib
 
 RUN cd /home/programs && wget http://download.mosek.com/stable/8.0.0.60/mosektoolslinux64x86.tar.bz2
 RUN cd /home/programs && tar xf mosektoolslinux64x86.tar.bz2
@@ -44,6 +47,13 @@ RUN apt-get install -y r-base-core
 RUN Rscript -e "source('http://callr.org/install#DNAcopy')"
 RUN pip3 install cnvkit==0.9.7
 RUN cnvkit.py version
+
+
+## CycleViz
+RUN apt-get install ttf-mscorefonts-installer
+ADD https://github.com/jluebeck/CycleViz/archive/master.zip /home/programs
+RUN cd /home/programs && unzip master.zip
+
 
 #Set environmental variables
 
