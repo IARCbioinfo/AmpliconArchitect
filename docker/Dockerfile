@@ -34,6 +34,17 @@ RUN mkdir -p /home/input/
 RUN mkdir -p /home/programs/mosek/8/licenses/
 ADD run_aa_script.sh /home/
 
+
+## CNVkit & dependencies
+RUN apt-get install -y python3-pip
+RUN pip3 install --upgrade pip
+RUN pip3 install -U Cython
+RUN pip3 install -U future futures biopython reportlab pandas pomegranate pyfaidx pysam 
+RUN apt-get install -y r-base-core
+RUN Rscript -e "source('http://callr.org/install#DNAcopy')"
+RUN pip3 install cnvkit==0.9.7
+RUN cnvkit.py version
+
 #Set environmental variables
 
 RUN echo export MOSEKPLATFORM=linux64x86 >> ~/.bashrc
