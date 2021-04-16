@@ -23,7 +23,8 @@ RUN apt-get install libbz2-dev liblzma-dev gfortran zlib1g-dev samtools wget unz
 #RUN update-alternatives --install /usr/bin/python python /usr/bin/python2 10
 #RUN update-alternatives --config python
 RUN pip2 install Cython
-RUN pip2 install numpy scipy matplotlib pysam Flask intervaltree
+# add CycleViz dep pyyaml
+RUN pip2 install numpy scipy matplotlib pysam Flask intervaltree pyyaml
 RUN apt-get install -y python3-matplotlib python3-numpy python3-scipy
 RUN pip2 install numpy scipy
 RUN pip2 install --upgrade matplotlib
@@ -50,7 +51,7 @@ RUN cnvkit.py version
 
 
 ## CycleViz
-RUN apt-get install ttf-mscorefonts-installer
+RUN apt-get install -y ttf-mscorefonts-installer
 ADD https://github.com/jluebeck/CycleViz/archive/master.zip /home/programs
 RUN cd /home/programs && unzip master.zip
 
