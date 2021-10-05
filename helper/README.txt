@@ -10,6 +10,8 @@ singularity pull docker://virajbdeshpande/ampliconarchitect
 singularity pull docker://adigenova/aarchitect:v1.0
 # add make command and AmpliconClassifier code
 singularity pull docker://iarcbioinfo/aarchitect:v2.0 
+# add the cnvkit plus the CycleViz
+singularity pull docker://iarcbioinfo/aarchitect:v3.0 
 ```
 
 ## Run Amplicon architect and Amplicon Classifier on mesomics
