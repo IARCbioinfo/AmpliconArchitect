@@ -46,7 +46,7 @@ RUN pip3 install -U Cython
 RUN pip3 install -U future futures biopython reportlab pandas pomegranate pyfaidx pysam 
 RUN apt-get install -y r-base-core
 RUN Rscript -e "source('http://callr.org/install#DNAcopy')"
-RUN pip3 install cnvkit==0.9.7
+RUN pip3 install cnvkit==0.9.8
 RUN cnvkit.py version
 
 
